@@ -3,10 +3,6 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 
 def preprocess_data(input_file, output_file):
-    """
-    Preprocesses the input CSV file by normalizing numeric data
-    and get the label column.
-    """
     ####csv input 
     df = pd.read_csv(input_file)
     #separate features and labels
@@ -29,9 +25,9 @@ def preprocess_data(input_file, output_file):
     print(f"Preprocessed data saved to {output_file}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Preprocess input CSV file and normalize numeric features.")
-    parser.add_argument("--input", required=True, help="Path to input CSV file.")
-    parser.add_argument("--output", required=True, help="Path to save preprocessed data.")
+    parser = argparse.ArgumentParser(description="Preprocess.")
+    parser.add_argument("--input", required=True, help="input CSV file.")
+    parser.add_argument("--output", required=True, help="save preprocessed data.")
 
     args = parser.parse_args()
     preprocess_data(args.input, args.output)
