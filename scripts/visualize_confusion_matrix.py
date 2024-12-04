@@ -23,9 +23,9 @@ def visualize_confusion_matrix(input_file, output_file):
     print(f"Confusion matrices saved for all labels as PNG files.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Visualize confusion matrix for multi-label classification.")
-    parser.add_argument("--input", required=True, help="Path to confusion matrix file (npy format).")
-    parser.add_argument("--output", required=True, help="Path to save the confusion matrix PNG file.")
+    parser = argparse.ArgumentParser(description="confusion matrix for multi-label classification.")
+    parser.add_argument("--input", required=True, help="confusion matrix file (npy format).")
+    parser.add_argument("--output", required=True, help="confusion matrix figure.")
 
     args = parser.parse_args()
     visualize_confusion_matrix(args.input, args.output)
