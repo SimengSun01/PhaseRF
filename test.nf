@@ -12,7 +12,7 @@ params.output_dir = "./output"
 params.seed = 42
 
 /*
- * Main workflow definition
+ * workflow 
  */
 workflow {
     // Channels for input data and scripts
@@ -23,20 +23,20 @@ workflow {
     visualize_script_ch = Channel.fromPath(params.visualize_script)
     pca_script_ch = Channel.fromPath(params.pca_script)
 
-    // Step 1: Preprocess data
+    //Preprocess data
     preprocessed_data_ch = preprocessData(input_csv_ch, preprocess_script_ch)
 
-    // Step 2: Split dataset
+    //Split dataset
     split_output = splitDataset(preprocessed_data_ch, split_script_ch)
 
-    // Step 3: Random Forest prediction
+    //Random Forest prediction
     rf_results = randomForestPrediction(split_output, rf_script_ch)
 
-    // Step 4: Visualize confusion matrix
+    // Visualize confusion matrix
     confusion_matrix_ch = rf_results.map { it[1] } // Extract confusion_matrix.npy
     visualizeConfusionMatrix(confusion_matrix_ch, visualize_script_ch)
 
-    // Step 5: PCA Visualization
+    //PCA Visualization
     predictions_file_ch = rf_results.map { it[2] } // Extract predictions.csv
     visualizePCA(predictions_file_ch, pca_script_ch)
 }
