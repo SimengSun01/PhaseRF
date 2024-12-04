@@ -7,13 +7,13 @@ params.preprocess_script = "${projectDir}/scripts/preprocess_data.py"
 params.split_script = "${projectDir}/scripts/split_dataset.py"
 params.rf_script = "${projectDir}/scripts/random_forest_prediction.py"
 params.visualize_script = "${projectDir}/scripts/visualize_confusion_matrix.py"
-params.pca_script = "${projectDir}/scripts/visualize_pca.py" // Add PCA visualization script
+params.pca_script = "${projectDir}/scripts/visualize_pca.py"
 params.output_dir = "./output"
 params.seed = 42
 
 
 workflow {
-    // Channels for input data and scripts
+//channels(?)
     input_csv_ch = Channel.fromPath(params.input_csv)
     preprocess_script_ch = Channel.fromPath(params.preprocess_script)
     split_script_ch = Channel.fromPath(params.split_script)
@@ -49,7 +49,7 @@ process preprocessData {
     output:
     path "preprocessed_data.csv"
 
-    container 'selinasun01/rf:latest'
+    container 'selinasun01/phaserf:latest'
 
     script:
     """
@@ -69,7 +69,7 @@ process splitDataset {
     output:
     tuple path("train.csv"), path("valid.csv"), path("test.csv")
 
-    container 'selinasun01/rf:latest'
+    container 'selinasun01/phaserf:latest'
 
     script:
     """
@@ -90,7 +90,7 @@ process randomForestPrediction {
     output:
     tuple path("results/metrics.txt"), path("results/confusion_matrix.npy"), path("results/predictions.csv")
 
-    container 'selinasun01/rf:latest'
+    container 'selinasun01/phaserf:latest'
 
     script:
     """
@@ -119,7 +119,7 @@ process visualizeConfusionMatrix {
     output:
     path "results/confusion_matrix_label_*.png"
 
-    container 'selinasun01/rf:latest'
+    container 'selinasun01/phaserf:latest'
 
     script:
     """
@@ -144,7 +144,7 @@ process visualizePCA {
     output:
     path "results/pca_plot.png"
 
-    container 'selinasun01/rf:latest'
+    container 'selinasun01/phaserf:latest'
 
     script:
     """
