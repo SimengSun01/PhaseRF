@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 nextflow.enable.dsl=2
 
-// Define parameters
+//parameters 
 params.input_csv = "${projectDir}/input/data.csv"
 params.preprocess_script = "${projectDir}/scripts/preprocess_data.py"
 params.split_script = "${projectDir}/scripts/split_dataset.py"
@@ -11,9 +11,7 @@ params.pca_script = "${projectDir}/scripts/visualize_pca.py" // Add PCA visualiz
 params.output_dir = "./output"
 params.seed = 42
 
-/*
- * workflow 
- */
+
 workflow {
     // Channels for input data and scripts
     input_csv_ch = Channel.fromPath(params.input_csv)
@@ -29,10 +27,10 @@ workflow {
     //Split dataset
     split_output = splitDataset(preprocessed_data_ch, split_script_ch)
 
-    //Random Forest prediction
+    //RF prediction
     rf_results = randomForestPrediction(split_output, rf_script_ch)
 
-    // Visualize confusion matrix
+    // visualize confusion matrix
     confusion_matrix_ch = rf_results.map { it[1] } // Extract confusion_matrix.npy
     visualizeConfusionMatrix(confusion_matrix_ch, visualize_script_ch)
 
@@ -41,9 +39,7 @@ workflow {
     visualizePCA(predictions_file_ch, pca_script_ch)
 }
 
-/*
- * Process: Preprocess Data
- */
+
 process preprocessData {
 
     input:
@@ -63,9 +59,7 @@ process preprocessData {
     """
 }
 
-/*
- * Process: Split Dataset
- */
+
 process splitDataset {
 
     input:
@@ -87,9 +81,6 @@ process splitDataset {
     """
 }
 
-/*
- * Process: Random Forest Prediction
- */
 process randomForestPrediction {
 
     input:
@@ -119,9 +110,6 @@ process randomForestPrediction {
     """
 }
 
-/*
- * Process: Visualize Confusion Matrix
- */
 process visualizeConfusionMatrix {
 
     input:
@@ -146,9 +134,7 @@ process visualizeConfusionMatrix {
     """
 }
 
-/*
- * Process: Visualize PCA
- */
+
 process visualizePCA {
 
     input:
