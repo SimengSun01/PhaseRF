@@ -37,9 +37,9 @@ def visualize_pca(predictions_file, output_file):
     print(f"PCA visualization saved to {output_file}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="PCA Visualization of Predictions")
-    parser.add_argument("--predictions", required=True, help="Path to the predictions CSV file.")
-    parser.add_argument("--output", required=True, help="Path to save the PCA visualization plot.")
+    parser = argparse.ArgumentParser(description="PCA Visualization of test predictions")
+    parser.add_argument("--predictions", required=True, help="the predictions CSV file.")
+    parser.add_argument("--output", required=True, help="PCA visualization figs.")
 
     args = parser.parse_args()
     visualize_pca(args.predictions, args.output)
