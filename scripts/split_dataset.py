@@ -21,10 +21,10 @@ def split_dataset(input_file, output_dir, seed):
     pd.concat([X_test, y_test], axis=1).to_csv(f"{output_dir}/test.csv", index=False)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Split dataset into train, valid, and test sets.")
-    parser.add_argument("--input", required=True, help="Path to input CSV file.")
-    parser.add_argument("--output_dir", required=True, help="Directory to save output splits.")
-    parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility.")
+    parser = argparse.ArgumentParser(description="Split.")
+    parser.add_argument("--input", required=True, help="input CSV file.")
+    parser.add_argument("--output_dir", required=True, help="save output splits.")
+    parser.add_argument("--seed", type=int, default=42, help="seed.")
 
     args = parser.parse_args()
     split_dataset(args.input, args.output_dir, args.seed)
