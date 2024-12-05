@@ -1,16 +1,16 @@
 # **PhaseRF: Random Forest Pipeline for Cell Phase Prediction**
 
-## **Background and Rationale**!
+## **Background and Rationale**
 
 ![Blank diagram](https://github.com/user-attachments/assets/1e042a7d-cad4-476a-bc9f-bc65489b2724)
 
 
-In this five-step Nextflow pipeline project, the goal is to train a **RandomForest model** for cell phase prediction. The cell cycle is a fundamental biological process characterized by distinct phases: G1, S, G2, and M. Cells are thought to enter a non-cycling “G0” state in a reversible manner, known as quiescence, or permanently exit the cell cycle, known as senescence. One example of the constant changes between cell phases is tumor cells, in which they divide rapidly, and some tumor cells resist and survive chemotherapies by entering quiescent. This method for cell cycle analysis allows for discrete phase classification and can help to provide information to study the regulation of this essential biological process, as well as its dysregulation in disease.
+In this five-step Nextflow pipeline project, the goal is to train a RandomForest model for cell phase prediction. We would like to study the cell cycle, since it is a fundamental biological process characterized by distinct phases: G1, S, G2, and M. Cells are thought to enter a non-cycling “G0” state in a reversible manner, known as quiescence, or permanently exit the cell cycle, known as senescence. One example of the constant changes between cell phases is tumor cells, in which they divide rapidly, and some tumor cells resist and survive chemotherapies by entering quiescent. This method for cell cycle analysis allows for discrete phase classification and can help to provide information to study the regulation of this essential biological process, as well as its dysregulation in disease.
 
-The input is a **preprocessed expression matrix** in CSV format annotated with cell phase information (`G0`, `G1`, `S2M`, and `G2`). Through training, the RandomForest model learns patterns within the data to predict the phase of each cell. The pipeline also includes:
+The input is a preprocessed expression matrix in CSV format annotated with cell phase information (`G0`, `G1`, `S2M`, and `G2`). Through training, the RandomForest model learns patterns within the data to predict the phase of each cell. The pipeline also includes:
 
-- Visualization of evaluation metrics using a **confusion matrix**.
-- **Principal Component Analysis (PCA)** on the test data, with cells visualized in low-dimensional space distinguished by predicted labels.
+- Visualization of evaluation metrics using a confusion matrix.
+- Principal Component Analysis (PCA) on the test data, with cells visualized in low-dimensional space distinguished by predicted labels.
 
 The following Python packages are utilized:
 
