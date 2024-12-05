@@ -1,6 +1,8 @@
 # **PhaseRF: Random Forest Pipeline for Cell Phase Prediction**
 
-## **Background and Rationale**![Blank diagram](https://github.com/user-attachments/assets/80a3de06-6edf-4003-a572-9c5697c2b702)
+## **Background and Rationale**!
+
+![Blank diagram](https://github.com/user-attachments/assets/1e042a7d-cad4-476a-bc9f-bc65489b2724)
 
 
 In this five-step Nextflow pipeline project, the goal is to train a **RandomForest model** for cell phase prediction. The input is a **preprocessed expression matrix** in CSV format annotated with cell phase information (`G0`, `G1`, `S2M`, and `G2`). Through training, the RandomForest model learns patterns within the data to predict the phase of each cell. The pipeline also includes:
