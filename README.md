@@ -62,5 +62,7 @@ The pipeline provides multiple levels of outputs, including the intermediate out
 1. multiple (depends on th number of distinct labels in the dataset; in this case, it is 4) distinct confusion matrix figures are generated to illustrate the classification prediction on a label level. They are named following this pattern: `confusion_matrix_label_n.png`
 2. an Evaluation metrics computed based on the model performance is generated; evaluation metrics such as precision, recall, support are included. The calculations can be found in `metrics.txt` and `confusion_matrix.npy`
 3. a PCA visualization figure (`pca_plot.png`) computed based on the test set is provided, with each dot representing a cell in the testing data, and each cell is coloured based on their predicted labels. In detail, G0 cells are coloured in blue G1 coloured in orange, S cells coloured in green and G2M cells in red.
-4. a csv called `predictions.csv` that contains the detailed predicted label for each cell, which is useful for future analysis. 
+4. a csv called `predictions.csv` that contains the detailed predicted label for each cell, which is useful for future analysis.
+
+Sample dataset created by Riba (2022): https://zenodo.org/records/4719436
 
