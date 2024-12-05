@@ -31,5 +31,7 @@ The following Python packages are utilized:
 4. Run the pipeline using NextFlow:
    ```bash
    nextflow run test.nf -profile docker
-
+After completing the training and testing process, you can find the results by entering: 
+   ```bash
+   cd output
 
