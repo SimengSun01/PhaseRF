@@ -25,13 +25,13 @@ def visualize_pca(predictions_file, output_file):
     plt.figure(figsize=(10, 8))
     for label in pca_df['Predicted_Label'].unique():
         subset = pca_df[pca_df['Predicted_Label'] == label]
-        plt.scatter(subset['PC1'], subset['PC2'], label=f"Label {label}", alpha=0.7)
+        plt.scatter(subset['PC1'], subset['PC2'], label=f"{label}", alpha=0.7)
 
     plt.title("PCA Visualization of Predictions", fontsize=16)
     plt.xlabel("Principal Component 1", fontsize=12)
     plt.ylabel("Principal Component 2", fontsize=12)
     plt.legend(title="Predicted Label")
-    plt.grid(True)
+   
 
     plt.savefig(output_file, dpi=300)
     print(f"PCA visualization saved to {output_file}")
