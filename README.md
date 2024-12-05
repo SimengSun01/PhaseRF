@@ -31,6 +31,10 @@ The following Python packages are utilized:
 4. Run the pipeline using NextFlow:
    ```bash
    nextflow run test.nf -profile docker
-5. After completing the training and testing process, you can find the results by entering: 'cd output'
-6. For the testing metrics, confusion matrix visualization and PCA visualization, enter 'cd results'
+5. After completing the training and testing process, you can find the results by entering: `cd output`
+6. For the testing metrics, confusion matrix visualization and PCA visualization, enter `cd results`
+The input data is already included in input, no adjustment needed to run the pipeline.
+
+
+### **Steps**
 
