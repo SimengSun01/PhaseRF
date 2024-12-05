@@ -31,7 +31,7 @@ The following Python packages are utilized:
 4. Run the pipeline using NextFlow:
    ```bash
    nextflow run test.nf -profile docker
-5. After completing the training and testing process, you can find the results by entering: `cd output`
+5. After completing the training and testing process, you can find the results by entering: `cd output` where intermediate results are saved
 6. For the testing metrics, confusion matrix visualization and PCA visualization, enter `cd results` from `output`
 The input data is already included in input, no adjustment needed to run the pipeline.
 
@@ -51,5 +51,16 @@ The input data is already included in input, no adjustment needed to run the pip
    
 7. PCA and Visualization
    Applying dimension reduction on the testing data, such that we plot the first 2 principal components, in which each dot represents a cell, and each dot is coloured based on the predicted labels. We expect to see cells (predicted) to cluster with cells in the same phase.
-   
+
+## **Input**
+The input is a set of human fibroblast cells gene expression data originally curated by Rita (2022). The dataset used by the project is in the CSV format, a raw count expression matrix that is preprocessed (cells filtered following the standard scRNA preprocessing protocol, filtered to keep only the set of annotated cycling & G0 marker genes) before the proeject, with an extra column named as “phase” representing the phase the cells. 
+Overall, the sample dataset is a raw count expression matrix with 4457 rows (cells) and 2121 columns (2120 genes and 1 label column). Within the label column, “phase”, we have 4 distinct labels: G0, G1, S2M, G2 in strings, while the rest of the data is consisted of integers representing the count of gene expressions. 
+
+
+## **Output**
+The pipeline provides multiple levels of outputs, including the intermediate outputs that are used for further analysis. For the final outputs that can be found in `PhaseRF/output/results`:
+1. multiple (depends on th number of distinct labels in the dataset; in this case, it is 4) distinct confusion matrix figures are generated to illustrate the classification prediction on a label level. They are named following this pattern: `confusion_matrix_label_n.png`
+2. an Evaluation metrics computed based on the model performance is generated; evaluation metrics such as precision, recall, support are included. The calculations can be found in `metrics.txt` and `confusion_matrix.npy`
+3. a PCA visualization figure (`pca_plot.png`) computed based on the test set is provided, with each dot representing a cell in the testing data, and each cell is coloured based on their predicted labels. In detail, G0 cells are coloured in blue G1 coloured in orange, S cells coloured in green and G2M cells in red.
+4. a csv called `predictions.csv` that contains the detailed predicted label for each cell, which is useful for future analysis. 
 
