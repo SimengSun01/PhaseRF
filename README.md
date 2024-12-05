@@ -22,5 +22,14 @@ The following Python packages are utilized:
 1. Open the terminal and clone the repository:
    ```bash
    git clone https://github.com/SimengSun01/PhaseRF.git
+2. Change to the project directory:
+   ```bash
+   cd PhaseRF
+3. Pull the Docker image:
+   ```bash
+   docker pull selinasun01/phaserf:latest
+4. Run the pipeline using NextFlow:
+   ```bash
+   nextflow run test.nf -profile docker
 
 
